@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_1uz4n75" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="4.12.0" modeler:executionPlatform="Camunda Platform" modeler:executionPlatformVersion="7.15.0">
+  <bpmn:process id="Process_15s4vz0" name="节点开始" isExecutable="true">
+    <bpmn:startEvent id="StartEvent_1" name="节点开始">
+      <bpmn:outgoing>Flow_1gkxnmq</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:sequenceFlow id="Flow_1gkxnmq" sourceRef="StartEvent_1" targetRef="Activity_0x9syq9" />
+    <bpmn:userTask id="Activity_0x9syq9" name="审批1" camunda:assignee="${initiator}">
+      <bpmn:incoming>Flow_1gkxnmq</bpmn:incoming>
+      <bpmn:outgoing>Flow_00d009p</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:sequenceFlow id="Flow_00d009p" sourceRef="Activity_0x9syq9" targetRef="Activity_1breeex" />
+    <bpmn:userTask id="Activity_1breeex" name="审批2" camunda:assignee="${approve}">
+      <bpmn:incoming>Flow_00d009p</bpmn:incoming>
+      <bpmn:outgoing>Flow_10su8wu</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:endEvent id="Event_1g2tve7" name="节点结束">
+      <bpmn:incoming>Flow_10su8wu</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_10su8wu" sourceRef="Activity_1breeex" targetRef="Event_1g2tve7" />
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_15s4vz0">
+      <bpmndi:BPMNEdge id="Flow_10su8wu_di" bpmnElement="Flow_10su8wu">
+        <di:waypoint x="530" y="117" />
+        <di:waypoint x="592" y="117" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_00d009p_di" bpmnElement="Flow_00d009p">
+        <di:waypoint x="370" y="117" />
+        <di:waypoint x="430" y="117" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1gkxnmq_di" bpmnElement="Flow_1gkxnmq">
+        <di:waypoint x="215" y="117" />
+        <di:waypoint x="270" y="117" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <dc:Bounds x="179" y="99" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="175" y="142" width="44" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1bp7y82_di" bpmnElement="Activity_0x9syq9">
+        <dc:Bounds x="270" y="77" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1g29kk4_di" bpmnElement="Activity_1breeex">
+        <dc:Bounds x="430" y="77" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1g2tve7_di" bpmnElement="Event_1g2tve7">
+        <dc:Bounds x="592" y="99" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="588" y="142" width="44" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>
